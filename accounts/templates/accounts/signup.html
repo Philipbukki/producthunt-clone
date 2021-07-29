@@ -2,7 +2,7 @@
 
 {% load crispy_forms_tags%}
 {% block content%}
-<form method="post" class="form-group">
+<form method="post" action="{% url 'signup'%}" class="form-group">
     {% csrf_token %}
     {{form|crispy}}
 <input type="submit" class ="btn btn-success" value="signup"/>
