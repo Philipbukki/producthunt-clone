@@ -5,7 +5,7 @@ An authenticated user to add a product.
 Unauthenticated users are only able view all the product listings but not add products
 
 ##### clone this repository
-```
+```console
 https://github.com/Philipbukki/producthunt-clone.git
 
 ```
@@ -28,8 +28,10 @@ cd ProductHuntDjango
 ```
 
 ##### install the packages needed.
+```console
 
 pipenv install -r requirements.txt
+```
 
 ##### Make migrations
 ```console
