@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import django_heroku
+import dj_database_url
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -43,6 +46,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -131,6 +135,8 @@ STATIC_ROOT = BASE_DIR / 'static'
 STATICFILES_DIRS = [
     BASE_DIR / 'producthunt/static/'
 ]
+STATICFILES_STORAGE = 'whitenoise.django.CompressedManifestStaticFilesStorage'
+
 
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
@@ -145,3 +151,6 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/login/"
+
+
+django_heroku.settings(locals())
