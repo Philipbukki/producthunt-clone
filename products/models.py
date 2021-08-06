@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 class Product(models.Model):
     title = models.CharField(max_length=100)
-    pub_date = models.DateTimeField()
+    pub_date = models.DateTimeField(auto_now_add=True)
     body = models.TextField()
     url = models.TextField()
     image = models.ImageField(upload_to='images/')

@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from .forms import ProductCreateForm
 from .models import Product
@@ -8,11 +8,9 @@ def home(request):
 
     products = Product.objects.all()
 
-    context = {
-        'products': products
-    }
+    context = {"products": products}
 
-    return render(request, 'products/home.html', context)
+    return render(request, "products/home.html", context)
 
 
 def product_create(request):
@@ -21,21 +19,19 @@ def product_create(request):
     if form.is_valid():
         form.save()
 
+        return redirect("/")
+
     else:
         form = ProductCreateForm()
 
-    context = {
-        'form': form
-    }
+    context = {"form": form}
 
-    return render(request, 'products/product_create.html', context)
+    return render(request, "products/product_create.html", context)
 
 
 def product_detail(request, pk):
     product = get_object_or_404(Product, id=pk)
 
-    context = {
-        'product': product
-    }
+    context = {"product": product}
 
-    return render(request, 'products/detail.html', context)
+    return render(request, "products/detail.html", context)

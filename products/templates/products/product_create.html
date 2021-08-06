@@ -1,10 +1,10 @@
 {% extends 'base.html'%}
 {% load crispy_forms_tags%}
 {% block content %}
-<form method="post" action="{url 'home'}" enctype='multipart/form-data'>
+<form method="post"  enctype='multipart/form-data'>
     {% csrf_token %}
     {{form|crispy}}
-<input type="submit" class ="btn btn-success" value="Add Product"/>
+<input type="submit" class ="btn btn-primary" value="Add Product">
 </form>
 
 
